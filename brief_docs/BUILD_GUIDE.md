@@ -2,7 +2,7 @@
 
 This guide explains what we are building, how the pieces fit together, and exactly how you build **your** feature without waiting for anyone else.
 
-**Stack:** Java 17+, Spring Boot 3.x, Maven, Spring Data JPA, PostgreSQL (local), Swagger UI for testing.
+**Stack:** Java 21, Spring Boot 4.1, Maven, Spring Data JPA, PostgreSQL (local), Swagger UI (springdoc 3.1.1) for testing.
 **Scope:** backend REST API only. No frontend in this phase.
 
 ---
@@ -283,6 +283,8 @@ In the security lesson, the login response will gain a `token` field. Your servi
 | `author` | `@ManyToOne User` | required |
 | `createdAt` | Instant | set on create |
 | `updatedAt` | Instant | set on every edit |
+
+**Heads-up when you add `updatedAt`:** the starter `Post` does not have it, and the lead's `DataSeeder` creates posts without setting it. Set `updatedAt` inside the entity's `@PrePersist` (and update it on edit with `@PreUpdate`), so seeding and creating both work without touching the seeder. Make the column non-null only if you do this.
 
 **Endpoints**
 
