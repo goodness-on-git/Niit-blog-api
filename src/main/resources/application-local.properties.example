@@ -1,0 +1,3 @@
+spring.datasource.url=jdbc:postgresql://localhost:5432/niit_blog
+spring.datasource.username=niit
+spring.datasource.password=niit_local
